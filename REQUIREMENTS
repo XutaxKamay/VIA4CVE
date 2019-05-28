@@ -5,3 +5,4 @@ chardet
 idna
 requests
 urllib3
+vulners

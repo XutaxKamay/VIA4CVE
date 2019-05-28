@@ -30,7 +30,7 @@ if __name__ == '__main__':
           'metadata': {'searchables': pm.getSearchables(),
                        'sources':     pm.getPluginNames()}}
 
-  open(path, "w").write(json.dumps(data))                      # Write data to path
+  open(path, "w").write(json.dumps(data, sort_keys=True, indent=4))                      # Write data to path
 
   if args.verify:
     _cves = json.loads(open(path).read())                      # Reload cves
