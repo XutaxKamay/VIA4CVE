@@ -60,10 +60,10 @@ class Configuration():
     if vulners_url in getfile:
         global vulners_api_key
         if not (vulners_api_key):
-            vulners_api_key = input("Please enter your api key for vulners.com")
+            vulners_api_key = input("[!] Please enter your api key for vulners.com: ")
         vulners_api = vulners.Vulners(vulners_api_key)
         vulners_type = getfile[len(vulners_url):]
-        print("[!] Fetching Vulners archive %s"%vulners_type)
+        print("[-] Fetching Vulners archive %s"%vulners_type)
         # Get response in a zipped json file
         response = vulners_api.vulners_get_request('archive', {'type':vulners_type})
         # Read zip file and return file data
@@ -73,7 +73,7 @@ class Configuration():
             return (data, None)
         return (None, None)
     else:
-        print("[!] Fetching %s"%getfile)
+        print("[-] Fetching %s"%getfile)
         if cls.getProxy():
           proxy = req.ProxyHandler({'http': cls.getProxy(), 'https': cls.getProxy()})
           auth = req.HTTPBasicAuthHandler()
