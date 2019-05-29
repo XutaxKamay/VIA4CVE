@@ -81,8 +81,8 @@ class Configuration():
           req.install_opener(opener)
         try:
           response = req.urlopen(getfile)
-        except:
-          msg = "[!] Could not fetch file %s"%getfile
+        except urllib.error.URLError as e:
+          msg = "[!] Could not fetch file %s error -> %s"%(getfile, e)
           if cls.exitWhenNoSource(): 
               sys.exit(msg)
           else:                      
